@@ -1,0 +1,132 @@
+@use "../../styles/variables" as var;
+
+.pageContainer {
+  max-width: 1440px;
+  margin: 0 auto;
+  // border: 1px solid;
+  padding: 5rem 4rem;
+
+  .loginPage {
+    margin-top: 5rem;
+    height: calc(100vh - 18rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10rem;
+
+    img {
+      flex: 1;
+    }
+
+    .formContainer {
+      flex: 1;
+      //   border: 1px solid;
+      h2 {
+        font-family: "Avenir-Bold", sans-serif;
+        font-size: 40px;
+        color: var.$primaryText;
+      }
+      .formDetails {
+        color: var.$secondaryText;
+        margin-top: 1rem;
+        font-family: "Avenir-Regular", sans-serif;
+        font-size: 21px;
+      }
+      form {
+        width: 100%;
+        margin-top: 4rem;
+        .inputsContainer {
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+          .inputField {
+            color: var.$secondaryText;
+            border: 2px solid var.$secondaryText15;
+            border-radius: 5px;
+            width: 100%;
+            height: 60px;
+            padding: 0 15px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+
+            &:focus {
+              outline: none;
+              border: 2px solid var.$secondaryText;
+            }
+
+            &::placeholder {
+              color: var.$secondaryText;
+              font-family: "Avenir-Regular", sans-serif;
+              font-size: 16px;
+              font-weight: 500;
+            }
+          }
+
+          .passwordContainer {
+            position: relative;
+            color: var.$secondaryText15;
+            width: 100%;
+            height: 60px;
+
+            input {
+              color: var.$secondaryText;
+              font-family: "Avenir-Regular", sans-serif;
+              font-size: 16px;
+              font-weight: 500;
+              padding: 0 15px;
+              width: 100%;
+              height: 100%;
+              border: 2px solid var.$secondaryText15;
+              border-radius: 5px;
+              transition: all 0.3s ease;
+
+              &:focus {
+                outline: none;
+                border: 2px solid var.$secondaryText;
+              }
+
+              &::placeholder {
+                color: var.$secondaryText;
+                font-family: "Avenir-Regular", sans-serif;
+                font-size: 16px;
+                font-weight: 500;
+              }
+            }
+            button {
+              position: absolute;
+              right: 15px;
+              top: 50%;
+              transform: translateY(-50%);
+              background: none;
+              border: none;
+              font-size: 14px;
+              font-family: "Avenir-Medium", sans-serif;
+              color: var.$baseColor;
+              cursor: pointer;
+            }
+          }
+        }
+        .forgotPassword {
+          color: var.$baseColor;
+          font-family: "Avenir-Medium", sans-serif;
+          font-size: 14px;
+          margin-top: 2rem;
+          cursor: pointer;
+        }
+        .submitBtn {
+          margin-top: 2.5rem;
+          width: 100%;
+          height: 60px;
+          background: var.$baseColor;
+          border: none;
+          border-radius: 5px;
+          color: white;
+          font-family: "Avenir-Regular", sans-serif;
+          font-size: 16px;
+          font-weight: 500;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,62 @@
+@use "../styles/variables" as var;
+
+.navContainer {
+  padding: 2rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  box-shadow: 3px 0px 20px 0px #0000000a;
+  z-index: 10;
+  background-color: white;
+
+  .firstChild {
+    display: flex;
+    align-items: center;
+    gap: 8rem;
+    .logo {
+      width: 170px;
+    }
+  }
+
+  .secondChild {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    justify-content: space-between;
+
+    .docsLink {
+      color: var.$primaryText;
+      text-decoration: underline;
+    }
+
+    .bellIcon {
+      cursor: pointer;
+      // font-size: 20px;
+      // color: var.$primaryText;
+    }
+    .userPanelContainer {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+      .userDetails {
+        display: flex;
+        gap: 0.5rem;
+
+        img {
+          width: 10px;
+        }
+        p {
+          color: var.$primaryText;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
