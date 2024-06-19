@@ -23,8 +23,7 @@ import settingsIcon from "@/assets/icons/sliders-h 1.svg";
 import pricingIcon from "@/assets/icons/badge-percent 1.svg";
 import auditIcon from "@/assets/icons/clipboard-list 1.svg";
 import systemsIcon from "@/assets/icons/tire 1.svg";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
   const sideBarLinks = [
@@ -48,32 +47,46 @@ const Sidebar = () => {
     {
       section: "BUSINESSES",
       links: [
-        { link: "Organization", icon: briefcaseIcon, path: "/users" },
-        { link: "Loan Products", icon: loanIcon, path: "/guarantors" },
+        { link: "Organization", icon: briefcaseIcon, path: "/organization" },
+        { link: "Loan Products", icon: loanIcon, path: "/loan-products" },
         {
           link: "Savings Products",
           icon: savingsProductsIcon,
-          path: "/guarantors",
+          path: "/savings-products",
         },
-        { link: "Fees and Charges", icon: feesIcon, path: "/guarantors" },
-        { link: "Transactions", icon: transactionsIcon, path: "/guarantors" },
-        { link: "Services", icon: galaxyIcon, path: "/guarantors" },
-        { link: "Service Account", icon: serviceIcon, path: "/guarantors" },
-        { link: "Settlements", icon: settlementIcon, path: "/guarantors" },
-        { link: "Reports", icon: reportIcon, path: "/guarantors" },
+        { link: "Fees and Charges", icon: feesIcon, path: "/fees-charges" },
+        { link: "Transactions", icon: transactionsIcon, path: "/transactions" },
+        { link: "Services", icon: galaxyIcon, path: "/services" },
+        {
+          link: "Service Account",
+          icon: serviceIcon,
+          path: "/service-account",
+        },
+        { link: "Settlements", icon: settlementIcon, path: "/settlements" },
+        { link: "Reports", icon: reportIcon, path: "/reports" },
       ],
     },
     {
       section: "SETTINGS",
       links: [
-        { link: "Preferences", icon: settingsIcon, path: "/guarantors" },
-        { link: "Fees and Pricing", icon: pricingIcon, path: "/guarantors" },
-        { link: "Audit Logs", icon: auditIcon, path: "/guarantors" },
-        { link: "Systems Messages", icon: systemsIcon, path: "/guarantors" },
+        { link: "Preferences", icon: settingsIcon, path: "/preferences" },
+        {
+          link: "Fees and Pricing",
+          icon: pricingIcon,
+          path: "/fees_and_pricing",
+        },
+        { link: "Audit Logs", icon: auditIcon, path: "/audit_logs" },
+        {
+          link: "Systems Messages",
+          icon: systemsIcon,
+          path: "/systems_messages",
+        },
       ],
     },
   ];
 
+  const location = useLocation();
+  console.log(location.pathname);
   const navigate = useNavigate();
 
   const logoutHandler = () => {
@@ -103,7 +116,11 @@ const Sidebar = () => {
             {section.links.map((link) => (
               <Link
                 to={`/dashboard/${section.section.toLowerCase()}${link.path}`}
-                className={classes.navLink}
+                className={`${classes.navLink} ${
+                  location.pathname.split("/")[3] === link.path.split("/")[1]
+                    ? classes.active
+                    : ""
+                }`}
               >
                 {" "}
                 <img src={link.icon} alt="linkIcon" />
