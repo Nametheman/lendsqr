@@ -75,6 +75,7 @@ const Sidebar = () => {
   ];
 
   const navigate = useNavigate();
+
   const logoutHandler = () => {
     navigate("/");
   };
@@ -97,11 +98,11 @@ const Sidebar = () => {
         </button>
 
         {sideBarLinks.map((section) => (
-          <div className={classes.linksSection}>
+          <div className={classes.linksSection} key={section.section}>
             <p className={classes.sectionHeader}>{section.section}</p>
             {section.links.map((link) => (
               <Link
-                to={`${section.section.toLowerCase()}${link.path}`}
+                to={`/dashboard/${section.section.toLowerCase()}${link.path}`}
                 className={classes.navLink}
               >
                 {" "}

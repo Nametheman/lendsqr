@@ -5,11 +5,17 @@ import { useFormik } from "formik";
 interface ITableFilterProps {
   filterShow: boolean;
   setFilterShow: (filterShow: boolean) => void;
+  usersData: any;
+  setUsersData: (usersData: any) => void;
+  setCurrentPage: (currentPage: number) => void;
 }
 
 const TableFilter: React.FC<ITableFilterProps> = ({
   filterShow,
   setFilterShow,
+  usersData,
+  setUsersData,
+  setCurrentPage,
 }) => {
   const initialData = {
     organization: "",
@@ -44,6 +50,16 @@ const TableFilter: React.FC<ITableFilterProps> = ({
 
   const onSubmit = (values: any) => {
     console.log(values);
+
+    const filteredData = usersData.filter((user: any) => {
+      return Object.keys(values).every((key) => {
+        return user[key].toLowerCase().includes(values[key].toLowerCase());
+      });
+    });
+
+    setFilterShow(false);
+    setCurrentPage(1);
+    setUsersData(filteredData);
   };
 
   const { values, resetForm, handleChange, handleSubmit } = useFormik({
@@ -52,6 +68,7 @@ const TableFilter: React.FC<ITableFilterProps> = ({
   });
 
   const handleCancel = () => {
+    setUsersData(usersData);
     resetForm();
   };
 
@@ -60,14 +77,13 @@ const TableFilter: React.FC<ITableFilterProps> = ({
       <form action="" onSubmit={handleSubmit}>
         <div className={classes.filterItem}>
           <label htmlFor="organization">Organization</label>
-          <select
+          <input
+            type="text"
             name="organization"
             id="organization"
             value={values.organization}
             onChange={handleChange}
-          >
-            <option value="all">All</option>
-          </select>
+          />
         </div>
         <div className={classes.filterItem}>
           <label htmlFor="username">Username</label>
@@ -118,6 +134,10 @@ const TableFilter: React.FC<ITableFilterProps> = ({
             onChange={handleChange}
           >
             <option value="all">All</option>
+            <option value="inactive">Inactive</option>
+            <option value="pending">Pending</option>
+            <option value="active">Active</option>
+            <option value="blacklisted">Blacklisted</option>
           </select>{" "}
         </div>
         <div className={classes.filterBtns}>

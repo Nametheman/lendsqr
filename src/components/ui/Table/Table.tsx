@@ -5,35 +5,31 @@ import { format } from "date-fns";
 import TableFilter from "./TableFilter";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import TableAction from "./TableAction";
-import { useNavigate } from "react-router-dom";
+import UserStatusModal from "../Modals/UserStatusModal";
 
 interface ITableProps {
   columns: any;
   data: any;
+  setUsersData: (props: any) => void;
+  allData: any;
+  setCurrentPage: (number: number) => void;
 }
 
-const Table: React.FC<ITableProps> = ({ columns, data }) => {
-  const navigate = useNavigate();
-  //   console.log(data);
-
+const Table: React.FC<ITableProps> = ({
+  columns,
+  data,
+  allData,
+  setUsersData,
+  setCurrentPage,
+}) => {
   const [tableData, setTableData] = useState<any[]>([]);
   const [filterShow, setFilterShow] = useState<boolean>(false);
   const [actionRowIndex, setActionRowIndex] = useState<number | null>(null);
+  const [showActionModal, setShowActionModal] = useState<boolean>(false);
+  const [modalAction, setModalAction] = useState<string>("");
 
   useEffect(() => {
-    setTableData(
-      data?.map((d: any) => {
-        return {
-          organization: d.profile.organization,
-          username: d.profile.name,
-          email: d.email,
-          phoneNumber: d.phoneNumber,
-          dateJoined: d.createdAt,
-          status: d.status,
-          id: d.id,
-        };
-      })
-    );
+    setTableData(data);
   }, [data]);
 
   const handleFilterClick = () => {
@@ -46,17 +42,30 @@ const Table: React.FC<ITableProps> = ({ columns, data }) => {
 
   const handleUserClick = (row: any) => {
     console.log(row);
-    navigate(`/dashboard/view_user/${row.id}`);
   };
 
   return (
     <div className={classes.tableContainer}>
       {filterShow && (
-        <TableFilter filterShow={filterShow} setFilterShow={setFilterShow} />
+        <TableFilter
+          filterShow={filterShow}
+          setFilterShow={setFilterShow}
+          setUsersData={setUsersData}
+          usersData={allData}
+          setCurrentPage={setCurrentPage}
+        />
+      )}
+      {showActionModal && (
+        <UserStatusModal
+          setShowActionModal={setShowActionModal}
+          showActionModal={showActionModal}
+          modalAction={modalAction}
+          row={tableData[actionRowIndex as number]}
+        />
       )}
       <table className={classes.table}>
         <thead>
-          <tr className="">
+          <tr>
             {columns &&
               columns.map((head: any, i: number) => (
                 <th key={`${i}column`} className="">
@@ -68,7 +77,7 @@ const Table: React.FC<ITableProps> = ({ columns, data }) => {
               ))}
           </tr>
         </thead>
-        <tbody className="w-full">
+        <tbody>
           {tableData.map((row: any, i: number) => (
             <tr
               key={`data${i}`}
@@ -84,7 +93,7 @@ const Table: React.FC<ITableProps> = ({ columns, data }) => {
                     i === tableData.length - 1 ? { borderBottom: "0px" } : {}
                   }
                 >
-                  {col.value === "dateJoined" ? (
+                  {col.value === "dateJoined" && row[col.value] ? (
                     format(new Date(row[col.value]), "MMM dd, yyyy hh:mm a")
                   ) : col.value === "status" ? (
                     <div className={classes.status}>
@@ -104,6 +113,10 @@ const Table: React.FC<ITableProps> = ({ columns, data }) => {
                         <TableAction
                           setActionIndex={setActionRowIndex}
                           actionIndex={actionRowIndex}
+                          showActionModal={showActionModal}
+                          setShowActionModal={setShowActionModal}
+                          setModalAction={setModalAction}
+                          row={row}
                         />
                       )}
 

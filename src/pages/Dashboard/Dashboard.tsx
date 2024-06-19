@@ -10,9 +10,17 @@ import Pagination from "@/components/ui/Table/Pagination";
 import { usePagination } from "@/store/usePagination";
 
 const DATA = JSON.parse(localStorage.getItem("usersData") as string) || [];
-
 const Dashboard = () => {
-  const [usersData, setUsersData] = useState(DATA);
+  const formattedData = DATA.map((d: any) => ({
+    organization: d.profile.organization,
+    username: d.profile.name,
+    email: d.email,
+    phoneNumber: d.phoneNumber,
+    dateJoined: d.createdAt,
+    status: d.status,
+    id: d.id,
+  }));
+  const [usersData, setUsersData] = useState(formattedData);
   const [paginatedData, setPaginatedData] = useState([]);
   const [showPerPage, setShowPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
@@ -23,13 +31,21 @@ const Dashboard = () => {
   useEffect(() => {
     setPaginatedData(usersData.slice(indexOfFirstUser, indexOfLastUser));
     window.scrollTo(0, 0);
-  }, [showPerPage, currentPage]);
+  }, [showPerPage, currentPage, usersData]);
 
+  const activeUsers = formattedData.filter(
+    (user: any) => user.status === "active"
+  );
+  const loanUsers = DATA.filter(
+    (user: any) => Number(user.education.loanRepayment) > 0
+  );
+
+  console.log(DATA);
   const dashboardMetrics = [
-    { name: "USERS", icon: userIcon, value: 2453 },
-    { name: "ACTIVE USERS", icon: activeUsersIcon, value: 2453 },
-    { name: "USERS WITH LOANS", icon: loanUsersIcon, value: 12453 },
-    { name: "USERS WITH SAVINGS", icon: savingsUsersIcon, value: 102453 },
+    { name: "USERS", icon: userIcon, value: formattedData.length },
+    { name: "ACTIVE USERS", icon: activeUsersIcon, value: activeUsers.length },
+    { name: "USERS WITH LOANS", icon: loanUsersIcon, value: loanUsers.length },
+    { name: "USERS WITH SAVINGS", icon: savingsUsersIcon, value: 0 },
   ];
 
   const tableColumns = [
@@ -52,11 +68,18 @@ const Dashboard = () => {
             name={cardDetails.name}
             icon={cardDetails.icon}
             value={cardDetails.value}
+            storedUsersData={formattedData}
           />
         ))}
       </div>
       <div className={classes.tableContainer}>
-        <Table data={paginatedData} columns={tableColumns} />
+        <Table
+          data={paginatedData}
+          columns={tableColumns}
+          setUsersData={setUsersData}
+          allData={formattedData}
+          setCurrentPage={setCurrentPage}
+        />
         <Pagination
           data={usersData}
           showPerPage={showPerPage}
