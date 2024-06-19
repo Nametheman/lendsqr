@@ -1,0 +1,73 @@
+@use "../../../styles/variables" as var;
+
+.paginationContainer {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .paginationShow {
+    color: var.$secondaryText;
+    span {
+      select {
+        width: 65px;
+        height: 30px;
+        background-color: #213f7d1a;
+        border: none;
+        outline: none;
+        padding: 5px;
+        border-radius: 5px;
+        color: #213f7d;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .paginationControls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    .controlBtn {
+      border: none;
+      outline: none;
+      background-color: #213f7d1a;
+      color: #213f7d;
+      width: 30px;
+      height: 30px;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .pages {
+      display: flex;
+      list-style: none;
+      align-items: center;
+      gap: 10px;
+
+      li {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var.$secondaryText;
+        transition: all 0.3s linear;
+        border-radius: 5px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #213f7d1a;
+          color: var.$primaryText;
+        }
+
+        &.active {
+          background-color: #213f7d1a;
+          color: var.$primaryText;
+        }
+      }
+    }
+  }
+}

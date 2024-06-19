@@ -1,0 +1,206 @@
+@use "../../styles/variables" as var;
+
+.viewUserContainer {
+  .goBack {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+
+    p {
+      font-size: 16px;
+      color: var.$primaryText;
+    }
+  }
+
+  .userActionsContainer {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h2 {
+      font-size: 1.3rem;
+      color: var.$primaryText;
+      font-weight: 500;
+    }
+
+    .userActionsBtns {
+      display: flex;
+      gap: 20px;
+
+      button {
+        width: 180px;
+        height: 40px;
+        background-color: transparent;
+        border: 1px solid;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .blacklist {
+        color: #e4033b;
+      }
+      .activate {
+        color: #39cdcc;
+      }
+      .deactivate {
+        color: #000;
+      }
+    }
+  }
+
+  .userDetailsHead {
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #213f7d0f;
+    box-shadow: 3px 5px 20px 0px #0000000a;
+    margin: 2rem 0;
+
+    .firstUserDetails {
+      padding: 30px;
+      display: flex;
+      align-items: center;
+
+      .userNameDetails {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding-right: 30px;
+
+        .userName {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          h2 {
+            font-weight: 500;
+            color: var.$primaryText;
+          }
+          p {
+            color: var.$primaryText;
+            font-size: 16px;
+          }
+        }
+      }
+      .userTier {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        border-left: 1px solid #545f7d1a;
+        border-right: 1px solid #545f7d1a;
+        height: 100px;
+        justify-content: center;
+        padding: 0 30px;
+
+        p {
+          color: var.$primaryText;
+          font-size: 16px;
+          font-weight: 500;
+        }
+      }
+
+      .userBalance {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        height: 100px;
+        justify-content: center;
+        padding: 0 30px;
+
+        h2 {
+          font-weight: 500;
+          color: var.$primaryText;
+        }
+        p {
+          color: var.$primaryText;
+          font-size: 16px;
+        }
+      }
+    }
+    .secondUserDetails {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 30px;
+      gap: 10px;
+      margin-top: 20px;
+
+      button {
+        width: 150px;
+        height: 30px;
+        background-color: transparent;
+        border: none;
+        font-size: 1rem;
+        cursor: pointer;
+
+        &.active {
+          color: var.$baseColor;
+          border-bottom: 2px solid;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+
+  .allUserInformation {
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #213f7d0f;
+    box-shadow: 3px 5px 20px 0px #0000000a;
+    margin: 2rem 0;
+    padding: 0 30px;
+
+    .infoSection {
+      border-bottom: 1px solid #213f7d0f;
+      padding: 30px 0;
+
+      h4 {
+        margin-bottom: 25px;
+        font-weight: 500;
+        color: var.$primaryText;
+        font-size: 1rem;
+      }
+
+      .infoGridSection {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 20px;
+        .info {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          h3 {
+            font-weight: 500;
+            color: var.$primaryText;
+          }
+          p {
+            color: var.$primaryText;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+  .noInfo {
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #213f7d0f;
+    box-shadow: 3px 5px 20px 0px #0000000a;
+    margin: 2rem 0;
+    padding: 0 30px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    p {
+      color: var.$primaryText;
+      font-size: 2rem;
+      font-weight: 600;
+      opacity: 0.4;
+    }
+  }
+}

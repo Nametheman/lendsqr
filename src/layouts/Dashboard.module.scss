@@ -1,0 +1,15 @@
+.dashboardContainer {
+  position: relative;
+  .pageContainer {
+    position: relative;
+    left: 280px;
+    width: calc(100% - 280px);
+
+    .pageContent {
+      background-color: #fbfbfb;
+      padding: 4rem;
+
+      // border: 1px solid;
+    }
+  }
+}

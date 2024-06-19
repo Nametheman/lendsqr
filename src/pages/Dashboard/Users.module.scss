@@ -1,0 +1,20 @@
+@use "../../styles//variables" as var;
+
+.container {
+  h1 {
+    font-weight: 500;
+    font-size: 25px;
+    color: var.$primaryText;
+    margin-bottom: 3rem;
+  }
+
+  .metricsContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .tableContainer {
+    margin-top: 3rem;
+  }
+}

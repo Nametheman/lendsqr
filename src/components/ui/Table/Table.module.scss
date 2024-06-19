@@ -1,0 +1,122 @@
+@use "../../../styles/variables" as var;
+
+.tableContainer {
+  position: relative;
+
+  .table {
+    border: 1px solid;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #213f7d0f;
+    box-shadow: 3px 5px 20px 0px #0000000a;
+    border-radius: 10px;
+    padding: 2rem;
+    //   border-collapse: collapse;
+    border-spacing: 0;
+
+    thead {
+      tr {
+        th {
+          padding: 0 0 20px;
+          div {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+
+            p {
+              font-weight: 600;
+              font-size: 15px;
+              color: var.$primaryText;
+            }
+          }
+        }
+      }
+    }
+
+    tbody {
+      width: 100%;
+      tr {
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+        &:hover {
+          background-color: #39cdcd0d;
+        }
+
+        td {
+          border-bottom: 1px solid #213f7d1a;
+          padding: 16px 0;
+          color: var.$secondaryText;
+          font-size: 15px;
+          font-weight: 500;
+
+          .status {
+            display: flex;
+            .active {
+              color: #39cd62;
+              background-color: #37cd621a;
+              padding: 8px 20px;
+              border-radius: 30px;
+            }
+            .inactive {
+              color: #545f7d;
+              background-color: #545f7d1a;
+              padding: 8px 20px;
+              border-radius: 30px;
+            }
+            .pending {
+              color: #e9b200;
+              background-color: #e8b2000d;
+              padding: 8px 20px;
+              border-radius: 30px;
+            }
+            .blacklisted {
+              color: #e4033b;
+              background-color: #e4033b1a;
+              padding: 8px 20px;
+              border-radius: 30px;
+            }
+          }
+
+          .actionContainer {
+            position: relative;
+
+            .actionElement {
+              position: absolute;
+              z-index: 1;
+              background-color: #fff;
+              display: flex;
+              flex-direction: column;
+              width: 200px;
+              left: -100px;
+              padding: 10px 15px;
+              border: 1px solid #545f7d0a;
+              box-shadow: 3px 5px 20px 0px #0000000a;
+              border-radius: 8px;
+
+              button {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 5px;
+                padding: 3px;
+                background-color: transparent;
+                color: var.$primaryText;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                font-size: 16px;
+                margin-bottom: 10px;
+
+                img {
+                  width: 20px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
