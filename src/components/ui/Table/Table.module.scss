@@ -11,7 +11,6 @@
     box-shadow: 3px 5px 20px 0px #0000000a;
     border-radius: 10px;
     padding: 2rem;
-    //   border-collapse: collapse;
     border-spacing: 0;
 
     thead {
@@ -114,6 +113,68 @@
                 }
               }
             }
+          }
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 750px) {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: scroll;
+
+    .table {
+      min-width: 1200px;
+      padding: 1rem;
+
+      tbody {
+        tr {
+          td {
+            font-size: 14px;
+
+            .actionContainer {
+              .actionElement {
+                left: -200px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  @media only screen and (min-width: 751px) and (max-width: 1200px) {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: scroll;
+    .table {
+      min-width: 1200px;
+      padding: 1rem;
+    }
+  }
+  @media only screen and (min-width: 1201px) and (max-width: 1440px) {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: scroll;
+    .table {
+      min-width: 1000px;
+      padding: 1rem;
+
+      thead {
+        tr {
+          th {
+            div {
+              p {
+                font-size: 14px;
+              }
+            }
+          }
+        }
+      }
+      tbody {
+        tr {
+          td {
+            font-size: 12px;
           }
         }
       }

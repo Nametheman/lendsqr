@@ -12,9 +12,35 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 2rem;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: scroll;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   .tableContainer {
     margin-top: 3rem;
+  }
+
+  @media only screen and (max-width: 750px) {
+    h1 {
+      font-size: 20px;
+      margin-bottom: 2rem;
+    }
+    .metricsContainer {
+      gap: 2rem;
+    }
+  }
+  @media only screen and (min-width: 751px) and (max-width: 1200px) {
+    .metricsContainer {
+      gap: 1.6rem;
+    }
+  }
+  @media only screen and (min-width: 1201px) and (max-width: 1440px) {
+    .metricsContainer {
+      gap: 2rem;
+    }
   }
 }

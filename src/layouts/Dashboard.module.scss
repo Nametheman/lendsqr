@@ -8,8 +8,29 @@
     .pageContent {
       background-color: #fbfbfb;
       padding: 4rem;
-
-      // border: 1px solid;
+    }
+  }
+  @media only screen and (max-width: 750px) {
+    .pageContainer {
+      left: 0;
+      width: 100%;
+      .pageContent {
+        padding: 1.2rem;
+      }
+    }
+  }
+  @media only screen and (min-width: 751px) and (max-width: 1200px) {
+    .pageContainer {
+      .pageContent {
+        padding: 2rem;
+      }
+    }
+  }
+  @media only screen and (min-width: 1201px) and (max-width: 1440px) {
+    .pageContainer {
+      .pageContent {
+        padding: 3rem;
+      }
     }
   }
 }

@@ -3,10 +3,11 @@ type USERROFILETYPE = {
   organization: string;
   dob: string;
   address: string;
-  location: {
-    lat: number;
-    long: number;
-  };
+  gender: string;
+  maritalStatus: string;
+  children: number;
+  residence: string;
+  tier: number;
 };
 
 export type USERTYPE = {
@@ -29,4 +30,31 @@ export type USERTYPE = {
     email: string;
     relationship: string;
   };
+  status: string;
+  createdAt: string;
+};
+
+export type TABLEDATATYPE = {
+  id: string;
+  username: string;
+  organization: string;
+  email: string;
+  phoneNumber: string;
+  status: string;
+  dateJoined: string;
+};
+
+export type TABLECOLUMNSTYPE = {
+  label: string;
+  value: string;
+  filter: boolean;
+};
+
+export type FILTERTYPE = {
+  username: string;
+  organization: string;
+  email: string;
+  phoneNumber: string;
+  status: string;
+  dateJoined: string;
 };

@@ -1,4 +1,3 @@
-import React from "react";
 import classes from "./SearchInput.module.scss";
 import { IoSearchOutline } from "react-icons/io5";
 

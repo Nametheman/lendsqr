@@ -203,4 +203,294 @@
       opacity: 0.4;
     }
   }
+
+  @media only screen and (max-width: 600px) {
+    .userActionsContainer {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+
+      h2 {
+        font-size: small;
+      }
+      .userActionsBtns {
+        display: flex;
+        gap: 10px;
+        width: 100%;
+
+        button {
+          flex: 1;
+        }
+      }
+    }
+
+    .userDetailsHead {
+      .firstUserDetails {
+        max-width: 100%;
+        overflow-x: scroll;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 20px;
+
+        .userNameDetails {
+          padding-right: 0px;
+          padding: 10px 0px;
+          img {
+            width: 60px;
+          }
+          .userName {
+            h2 {
+              font-size: 1rem;
+            }
+            p {
+              font-size: 14px;
+            }
+          }
+        }
+        .userTier {
+          padding: 0px;
+          border: none;
+          height: 60px;
+        }
+        .userBalance {
+          padding: 0px;
+          height: 60px;
+        }
+      }
+      .secondUserDetails {
+        display: none;
+      }
+    }
+
+    .allUserInformation {
+      padding: 0 20px;
+      .infoSection {
+        border-bottom: 1px solid #213f7d0f;
+        padding: 20px 0;
+
+        .infoGridSection {
+          grid-template-columns: 1fr;
+          .info {
+            h3 {
+              font-size: 16px;
+            }
+            p {
+              font-size: 13px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media only screen and (min-width: 601px) and (max-width: 1000px) {
+    .userActionsContainer {
+      gap: 20px;
+
+      h2 {
+        font-size: small;
+      }
+    }
+
+    .userDetailsHead {
+      .firstUserDetails {
+        max-width: 100%;
+        overflow-x: scroll;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 20px;
+
+        .userNameDetails {
+          padding-right: 0px;
+          padding: 10px 0px;
+          img {
+            width: 60px;
+          }
+          .userName {
+            h2 {
+              font-size: 1rem;
+            }
+            p {
+              font-size: 14px;
+            }
+          }
+        }
+        .userTier {
+          padding: 0px;
+          border: none;
+          height: 60px;
+        }
+        .userBalance {
+          padding: 0px;
+          height: 60px;
+        }
+      }
+      .secondUserDetails {
+        display: none;
+      }
+    }
+
+    .allUserInformation {
+      padding: 0 20px;
+      .infoSection {
+        border-bottom: 1px solid #213f7d0f;
+        padding: 20px 0;
+
+        .infoGridSection {
+          grid-template-columns: 1fr 1fr;
+          .info {
+            h3 {
+              font-size: 16px;
+            }
+            p {
+              font-size: 13px;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media only screen and (min-width: 1001px) and (max-width: 1200px) {
+    .userActionsContainer {
+      gap: 20px;
+
+      h2 {
+        font-size: small;
+      }
+    }
+
+    .userDetailsHead {
+      .firstUserDetails {
+        max-width: 100%;
+        overflow-x: scroll;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 20px;
+
+        .userNameDetails {
+          padding-right: 0px;
+          padding: 10px 0px;
+          img {
+            width: 60px;
+          }
+          .userName {
+            h2 {
+              font-size: 1rem;
+            }
+            p {
+              font-size: 14px;
+            }
+          }
+        }
+        .userTier {
+          padding: 0px;
+          border: none;
+          height: 60px;
+        }
+        .userBalance {
+          padding: 0px;
+          height: 60px;
+        }
+      }
+      .secondUserDetails {
+        display: flex;
+        font-size: 10px;
+
+        button {
+          font-size: 13px;
+        }
+      }
+    }
+
+    .allUserInformation {
+      padding: 0 20px;
+      .infoSection {
+        border-bottom: 1px solid #213f7d0f;
+        padding: 20px 0;
+
+        .infoGridSection {
+          grid-template-columns: 1fr 1fr 1fr;
+          .info {
+            h3 {
+              font-size: 16px;
+            }
+            p {
+              font-size: 13px;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media only screen and (min-width: 1201px) and (max-width: 1440px) {
+    .userActionsContainer {
+      gap: 20px;
+
+      h2 {
+        font-size: small;
+      }
+    }
+
+    .userDetailsHead {
+      .firstUserDetails {
+        max-width: 100%;
+        overflow-x: scroll;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 20px;
+
+        .userNameDetails {
+          padding-right: 0px;
+          padding: 10px 0px;
+          img {
+            width: 60px;
+          }
+          .userName {
+            h2 {
+              font-size: 1rem;
+            }
+            p {
+              font-size: 14px;
+            }
+          }
+        }
+        .userTier {
+          padding: 0px;
+          border: none;
+          height: 60px;
+        }
+        .userBalance {
+          padding: 0px;
+          height: 60px;
+        }
+      }
+      .secondUserDetails {
+        display: flex;
+      }
+    }
+
+    .allUserInformation {
+      padding: 0 20px;
+      .infoSection {
+        border-bottom: 1px solid #213f7d0f;
+        padding: 20px 0;
+
+        .infoGridSection {
+          grid-template-columns: 1fr 1fr 1fr 1fr;
+          .info {
+            h3 {
+              font-size: 16px;
+            }
+            p {
+              font-size: 13px;
+            }
+          }
+        }
+      }
+    }
+  }
 }

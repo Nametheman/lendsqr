@@ -1,12 +1,13 @@
 import React, { useRef, useEffect } from "react";
 import classes from "./TableFilter.module.scss";
 import { useFormik } from "formik";
+import { FILTERTYPE, TABLEDATATYPE } from "@/types/appTypes";
 
 interface ITableFilterProps {
   filterShow: boolean;
   setFilterShow: (filterShow: boolean) => void;
-  usersData: any;
-  setUsersData: (usersData: any) => void;
+  usersData: TABLEDATATYPE[];
+  setUsersData: (usersData: TABLEDATATYPE[]) => void;
   setCurrentPage: (currentPage: number) => void;
 }
 
@@ -48,12 +49,12 @@ const TableFilter: React.FC<ITableFilterProps> = ({
     }
   }, []);
 
-  const onSubmit = (values: any) => {
-    console.log(values);
-
-    const filteredData = usersData.filter((user: any) => {
+  const onSubmit = (values: FILTERTYPE) => {
+    const filteredData = usersData.filter((user: TABLEDATATYPE) => {
       return Object.keys(values).every((key) => {
-        return user[key].toLowerCase().includes(values[key].toLowerCase());
+        return user[key as keyof FILTERTYPE]
+          .toLowerCase()
+          .includes(values[key as keyof FILTERTYPE].toLowerCase());
       });
     });
 

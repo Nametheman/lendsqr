@@ -4,20 +4,20 @@ import viewIcon from "@/assets/icons/view-user.svg";
 import blockIcon from "@/assets/icons/block-user.svg";
 import checkIcon from "@/assets/icons/check-user.svg";
 import { useNavigate } from "react-router-dom";
+import { TABLEDATATYPE, USERTYPE } from "@/types/appTypes";
 
 interface ITableActionProps {
-  setActionIndex: (props: any) => void;
+  setActionIndex: (props: number | null) => void;
   actionIndex: number | null;
   showActionModal: boolean;
-  setShowActionModal: (props: any) => void;
-  setModalAction: (props: any) => void;
-  row: any;
+  setShowActionModal: (props: boolean) => void;
+  setModalAction: (props: string) => void;
+  row: TABLEDATATYPE | USERTYPE;
 }
 
 const TableAction: React.FC<ITableActionProps> = ({
   setActionIndex,
   actionIndex,
-  showActionModal,
   setShowActionModal,
   setModalAction,
   row,

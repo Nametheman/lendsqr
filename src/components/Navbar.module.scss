@@ -11,6 +11,11 @@
   z-index: 10;
   background-color: white;
 
+  .mobLogo,
+  .mobSecond {
+    display: none;
+  }
+
   .firstChild {
     display: flex;
     align-items: center;
@@ -58,5 +63,44 @@
         }
       }
     }
+  }
+
+  @media only screen and (max-width: 750px) {
+    padding: 2rem 1.2rem;
+
+    .mobLogo {
+      display: block;
+      img {
+        width: 100px;
+      }
+    }
+    .mobSecond {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      img {
+        width: 30px;
+        height: 30px;
+        border-radius: 999px;
+      }
+      .menuIcon {
+        color: var.$primaryText;
+      }
+    }
+    .firstChild,
+    .secondChild {
+      display: none;
+    }
+  }
+  @media only screen and (min-width: 751px) and (max-width: 1200px) {
+    justify-content: flex-end;
+
+    .firstChild {
+      display: none;
+    }
+  }
+  @media only screen and (min-width: 1201px) and (max-width: 1440px) {
+    padding: 2rem 3rem;
   }
 }

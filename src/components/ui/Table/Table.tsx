@@ -6,12 +6,13 @@ import TableFilter from "./TableFilter";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import TableAction from "./TableAction";
 import UserStatusModal from "../Modals/UserStatusModal";
+import { TABLECOLUMNSTYPE, TABLEDATATYPE } from "@/types/appTypes";
 
 interface ITableProps {
-  columns: any;
-  data: any;
-  setUsersData: (props: any) => void;
-  allData: any;
+  columns: TABLECOLUMNSTYPE[];
+  data: TABLEDATATYPE[];
+  setUsersData: (props: TABLEDATATYPE[]) => void;
+  allData: TABLEDATATYPE[];
   setCurrentPage: (number: number) => void;
 }
 
@@ -22,7 +23,7 @@ const Table: React.FC<ITableProps> = ({
   setUsersData,
   setCurrentPage,
 }) => {
-  const [tableData, setTableData] = useState<any[]>([]);
+  const [tableData, setTableData] = useState<TABLEDATATYPE[]>([]);
   const [filterShow, setFilterShow] = useState<boolean>(false);
   const [actionRowIndex, setActionRowIndex] = useState<number | null>(null);
   const [showActionModal, setShowActionModal] = useState<boolean>(false);
@@ -38,10 +39,6 @@ const Table: React.FC<ITableProps> = ({
 
   const handleActionClick = (index: number) => {
     setActionRowIndex((prev) => (prev === index ? null : index));
-  };
-
-  const handleUserClick = (row: any) => {
-    console.log(row);
   };
 
   return (
@@ -67,7 +64,7 @@ const Table: React.FC<ITableProps> = ({
         <thead>
           <tr>
             {columns &&
-              columns.map((head: any, i: number) => (
+              columns.map((head: TABLECOLUMNSTYPE, i: number) => (
                 <th key={`${i}column`} className="">
                   <div onClick={handleFilterClick}>
                     <p>{head.label}</p>
@@ -78,14 +75,9 @@ const Table: React.FC<ITableProps> = ({
           </tr>
         </thead>
         <tbody>
-          {tableData.map((row: any, i: number) => (
-            <tr
-              key={`data${i}`}
-              onClick={() => {
-                handleUserClick(row);
-              }}
-            >
-              {columns?.map((col: any, j: number) => (
+          {tableData.map((row: TABLEDATATYPE, i: number) => (
+            <tr key={`data${i}`}>
+              {columns?.map((col: TABLECOLUMNSTYPE, j: number) => (
                 <td
                   key={`key${j}`}
                   className=""
@@ -126,7 +118,7 @@ const Table: React.FC<ITableProps> = ({
                       />
                     </div>
                   ) : (
-                    row[col.value]
+                    row[col.value as keyof TABLEDATATYPE]
                   )}
                 </td>
               ))}

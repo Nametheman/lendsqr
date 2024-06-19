@@ -1,13 +1,14 @@
-import React from "react";
-import logo from "@/assets/images/logo.svg";
 import classes from "./Navbar.module.scss";
 import SearchInput from "./ui/SearchInput";
-import { FaRegBell } from "react-icons/fa";
 import avatar from "@/assets/images/avatar.svg";
 import caret from "@/assets/icons/caret.svg";
 import bell from "@/assets/icons/bell.png";
+import logo from "@/assets/images/logo.svg";
+import { HiMenuAlt3 } from "react-icons/hi";
+import { useShowMobileNav } from "@/store/useMobileNav";
 
 const Navbar = () => {
+  const { showMobileNav, setShowMobileNav } = useShowMobileNav();
   return (
     <nav className={classes.navContainer}>
       <div className={classes.firstChild}>
@@ -23,6 +24,18 @@ const Navbar = () => {
             <img src={caret} alt="caret_icon" />
           </div>
         </div>
+      </div>
+      <div className={classes.mobLogo}>
+        <img src={logo} alt="logo" />
+      </div>
+
+      <div className={classes.mobSecond}>
+        <img src={avatar} alt="avatar" className={classes.avatar} />
+        <HiMenuAlt3
+          size={30}
+          className={classes.menuIcon}
+          onClick={() => setShowMobileNav(!showMobileNav)}
+        />
       </div>
     </nav>
   );

@@ -129,4 +129,67 @@
       }
     }
   }
+  @media only screen and (max-width: 450px) {
+    padding: 2rem;
+
+    .loginPage {
+      flex-direction: column;
+
+      img {
+        position: absolute;
+        width: 100%;
+        opacity: 0.1;
+        z-index: -1;
+      }
+
+      .formContainer {
+        width: 100%;
+
+        h2 {
+          font-size: 1.2rem;
+        }
+        .formDetails {
+          font-size: 1rem;
+        }
+        form {
+          margin-top: 3rem;
+        }
+      }
+    }
+  }
+  @media only screen and (min-width: 450px) and (max-width: 1000px) {
+    padding: 2rem;
+
+    .loginPage {
+      flex-direction: column;
+
+      img {
+        position: absolute;
+        width: 100%;
+        opacity: 0.1;
+        z-index: -1;
+      }
+
+      .formContainer {
+        width: 400px;
+
+        h2 {
+          font-size: 1.2rem;
+        }
+        .formDetails {
+          font-size: 1rem;
+        }
+        form {
+          margin-top: 3rem;
+        }
+      }
+    }
+  }
+  @media only screen and (min-width: 1001px) and (max-width: 1200px) {
+    .loginPage {
+      img {
+        width: 400px;
+      }
+    }
+  }
 }

@@ -5,14 +5,8 @@ interface IMetricsCardProps {
   name: string;
   value: number;
   icon: string;
-  storedUsersData: any[];
 }
-const MetricsCard: React.FC<IMetricsCardProps> = ({
-  name,
-  value,
-  icon,
-  storedUsersData,
-}) => {
+const MetricsCard: React.FC<IMetricsCardProps> = ({ name, value, icon }) => {
   return (
     <div className={classes.cardContainer}>
       <img src={icon} alt="icon" className={classes.cardIcon} />
