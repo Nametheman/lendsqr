@@ -3,16 +3,17 @@ import classes from "./Pagination.module.scss";
 import { RxCaretLeft, RxCaretRight } from "react-icons/rx";
 import { usePagination } from "@/store/usePagination";
 import { paginationRange } from "@/utils/appUtils";
+import { TABLEDATATYPE } from "@/types/appTypes";
 
 interface IPaginationProps {
-  data: any[];
+  data: TABLEDATATYPE[];
   showPerPage: number;
   setShowPerPage: (number: number) => void;
   currentPage: number;
   setCurrentPage: (number: number) => void;
 }
 interface IPagesProps {
-  data: any[];
+  data: TABLEDATATYPE[];
   showPerPage: number;
   currentPage: number;
   setCurrentPage: (number: number) => void;
@@ -95,6 +96,23 @@ const Pagination: React.FC<IPaginationProps> = ({
         </span>{" "}
         out of <span>{data.length}</span>
       </div>
+      <div className={classes.paginationShowMobile}>
+        <span>
+          <select
+            value={showPerPage}
+            onChange={(e) => {
+              const number = parseInt(e.target.value);
+              setCurrentPage(1);
+              setShowPerPage(number);
+            }}
+          >
+            {["10", "25", "50", "100"].map((i) => (
+              <option key={i}>{i}</option>
+            ))}
+          </select>
+        </span>{" "}
+        out of <span>{data.length}</span>
+      </div>
       <div className={classes.paginationControls}>
         <button
           className={`${classes.controlBtn}`}
@@ -108,6 +126,18 @@ const Pagination: React.FC<IPaginationProps> = ({
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
         />{" "}
+        <button className={`${classes.controlBtn}`} onClick={handleNextPage}>
+          <RxCaretRight size={25} />
+        </button>
+      </div>
+      <div className={classes.paginationControlMobile}>
+        <button
+          className={`${classes.controlBtn}`}
+          onClick={handlePreviousPage}
+        >
+          <RxCaretLeft size={25} />
+        </button>
+
         <button className={`${classes.controlBtn}`} onClick={handleNextPage}>
           <RxCaretRight size={25} />
         </button>

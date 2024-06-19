@@ -24,4 +24,61 @@
     letter-spacing: 1.2px;
     color: var.$primaryText;
   }
+
+  @media only screen and (max-width: 750px) {
+    width: 200px;
+    padding: 1rem;
+    .metric {
+      font-size: 1.3rem;
+    }
+    .cardIcon {
+      width: 30px;
+    }
+    .label {
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+  }
+
+  @media only screen and (min-width: 751px) and (max-width: 1200px) {
+    width: 200px;
+    padding: 1rem;
+    .metric {
+      font-size: 1.3rem;
+    }
+    .cardIcon {
+      width: 30px;
+    }
+    .label {
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+  }
+  @media only screen and (min-width: 1201px) and (max-width: 1440px) {
+    width: 100%;
+    padding: 1.4rem;
+    .metric {
+      font-size: 1.3rem;
+    }
+    .cardIcon {
+      width: 50px;
+    }
+    .label {
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+  }
+  @media only screen and (min-width: 1441px) and (max-width: 1900px) {
+    padding: 2rem;
+
+    .cardIcon {
+      width: 60px;
+    }
+    .metric {
+      font-size: 1.8rem;
+    }
+    .label {
+      font-size: 1rem;
+    }
+  }
 }

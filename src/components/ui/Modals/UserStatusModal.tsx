@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import classes from "./UserStatusModal.module.scss";
 import { createPortal } from "react-dom";
+import { TABLEDATATYPE, USERTYPE } from "@/types/appTypes";
 
 const modalRoot = document.getElementById("modal-root") as HTMLElement;
 const DATA = JSON.parse(localStorage.getItem("usersData") as string) || [];
@@ -9,7 +10,7 @@ interface IUserStatusModalProps {
   setShowActionModal: (props: boolean) => void;
   showActionModal: boolean;
   modalAction: string;
-  row?: any;
+  row: TABLEDATATYPE | USERTYPE;
 }
 
 const UserStatusModal: React.FC<IUserStatusModalProps> = ({
@@ -26,10 +27,9 @@ const UserStatusModal: React.FC<IUserStatusModalProps> = ({
   }, [showActionModal]);
 
   const modalActionHandler = () => {
-    console.log(row);
     const userId = row.id;
     if (modalAction === "blacklist") {
-      DATA.forEach((user: any) => {
+      DATA.forEach((user: USERTYPE) => {
         if (user.id === userId) {
           user.status = "blacklisted";
         }
@@ -38,7 +38,7 @@ const UserStatusModal: React.FC<IUserStatusModalProps> = ({
       window.location.reload();
       setShowActionModal(false);
     } else if (modalAction === "activate") {
-      DATA.forEach((user: any) => {
+      DATA.forEach((user: USERTYPE) => {
         if (user.id === userId) {
           user.status = "active";
         }
@@ -47,7 +47,7 @@ const UserStatusModal: React.FC<IUserStatusModalProps> = ({
       window.location.reload();
       setShowActionModal(false);
     } else if (modalAction === "deactivate") {
-      DATA.forEach((user: any) => {
+      DATA.forEach((user: USERTYPE) => {
         if (user.id === userId) {
           user.status = "inactive";
         }

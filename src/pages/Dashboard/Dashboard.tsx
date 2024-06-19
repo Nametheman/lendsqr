@@ -7,11 +7,11 @@ import loanUsersIcon from "@/assets/icons/loanUsersIcon.svg";
 import savingsUsersIcon from "@/assets/icons/savingsUsersIcon.svg";
 import Table from "@/components/ui/Table/Table";
 import Pagination from "@/components/ui/Table/Pagination";
-import { usePagination } from "@/store/usePagination";
+import { TABLECOLUMNSTYPE, TABLEDATATYPE, USERTYPE } from "@/types/appTypes";
 
 const DATA = JSON.parse(localStorage.getItem("usersData") as string) || [];
 const Dashboard = () => {
-  const formattedData = DATA.map((d: any) => ({
+  const formattedData: TABLEDATATYPE[] = DATA.map((d: any) => ({
     organization: d.profile.organization,
     username: d.profile.name,
     email: d.email,
@@ -20,8 +20,8 @@ const Dashboard = () => {
     status: d.status,
     id: d.id,
   }));
-  const [usersData, setUsersData] = useState(formattedData);
-  const [paginatedData, setPaginatedData] = useState([]);
+  const [usersData, setUsersData] = useState<TABLEDATATYPE[]>(formattedData);
+  const [paginatedData, setPaginatedData] = useState<TABLEDATATYPE[]>([]);
   const [showPerPage, setShowPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -34,13 +34,12 @@ const Dashboard = () => {
   }, [showPerPage, currentPage, usersData]);
 
   const activeUsers = formattedData.filter(
-    (user: any) => user.status === "active"
+    (user: TABLEDATATYPE) => user.status === "active"
   );
   const loanUsers = DATA.filter(
-    (user: any) => Number(user.education.loanRepayment) > 0
+    (user: USERTYPE) => Number(user.education.loanRepayment) > 0
   );
 
-  console.log(DATA);
   const dashboardMetrics = [
     { name: "USERS", icon: userIcon, value: formattedData.length },
     { name: "ACTIVE USERS", icon: activeUsersIcon, value: activeUsers.length },
@@ -48,14 +47,14 @@ const Dashboard = () => {
     { name: "USERS WITH SAVINGS", icon: savingsUsersIcon, value: 0 },
   ];
 
-  const tableColumns = [
+  const tableColumns: TABLECOLUMNSTYPE[] = [
     { label: "ORGANIZATION", value: "organization", filter: true },
     { label: "USERNAME", value: "username", filter: true },
     { label: "EMAIL", value: "email", filter: true },
     { label: "PHONE NUMBER", value: "phoneNumber", filter: true },
     { label: "DATE JOINED", value: "dateJoined", filter: true },
     { label: "STATUS", value: "status", filter: true },
-    { label: "", value: "action", filter: true },
+    { label: "", value: "action", filter: false },
   ];
 
   return (
@@ -68,7 +67,6 @@ const Dashboard = () => {
             name={cardDetails.name}
             icon={cardDetails.icon}
             value={cardDetails.value}
-            storedUsersData={formattedData}
           />
         ))}
       </div>

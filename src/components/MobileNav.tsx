@@ -1,5 +1,5 @@
-import classes from "./Sidebar.module.scss";
-import logo from "@/assets/images/logo.svg";
+import { createPortal } from "react-dom";
+import classes from "./MobileNav.module.scss";
 import logout from "@/assets/icons/sign-out 1.svg";
 import briefcaseIcon from "@/assets/icons/briefcase 1.svg";
 import caretArrow from "@/assets/icons/caretArrow.svg";
@@ -23,10 +23,12 @@ import settingsIcon from "@/assets/icons/sliders-h 1.svg";
 import pricingIcon from "@/assets/icons/badge-percent 1.svg";
 import auditIcon from "@/assets/icons/clipboard-list 1.svg";
 import systemsIcon from "@/assets/icons/tire 1.svg";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useShowMobileNav } from "@/store/useMobileNav";
 
-const Sidebar = () => {
+const mobileDom = document.getElementById("mobileNav") as HTMLElement;
+const MobileNav = () => {
+  const { showMobileNav, setShowMobileNav } = useShowMobileNav();
   const sideBarLinks = [
     {
       section: "CUSTOMERS",
@@ -81,47 +83,50 @@ const Sidebar = () => {
     navigate("/");
   };
 
-  return (
-    <aside className={classes.sideBarContainer}>
-      <div className={classes.logoContainer}>
-        <img src={logo} alt="company_logo" className={classes.logo} />
-      </div>
-      <div className={classes.sideBarMenuContainer}>
-        <button className={classes.linkBtn}>
-          <img src={briefcaseIcon} alt="briefcase_icon" />
-          <p>Switch Organization</p>
-          <img src={caretArrow} alt="caretArrow_icon" />
-        </button>
-        <button className={`${classes.linkBtn} ${classes.navBtn}`}>
-          <img src={homeIcon} alt="homeIcon" />
-          <p>Dashboard</p>
-        </button>
+  return createPortal(
+    <div className={classes.container}>
+      <div
+        className={`${classes.mobileNav} ${showMobileNav && `${classes.open}`}`}
+      >
+        <div className={classes.sideBarMenuContainer}>
+          <button className={classes.linkBtn}>
+            <img src={briefcaseIcon} alt="briefcase_icon" />
+            <p>Switch Organization</p>
+            <img src={caretArrow} alt="caretArrow_icon" />
+          </button>
+          <button className={`${classes.linkBtn} ${classes.navBtn}`}>
+            <img src={homeIcon} alt="homeIcon" />
+            <p>Dashboard</p>
+          </button>
 
-        {sideBarLinks.map((section) => (
-          <div className={classes.linksSection} key={section.section}>
-            <p className={classes.sectionHeader}>{section.section}</p>
-            {section.links.map((link) => (
-              <Link
-                to={`/dashboard/${section.section.toLowerCase()}${link.path}`}
-                className={classes.navLink}
-              >
-                {" "}
-                <img src={link.icon} alt="linkIcon" />
-                <p>{link.link}</p>
-              </Link>
-            ))}
-          </div>
-        ))}
+          {sideBarLinks.map((section) => (
+            <div className={classes.linksSection} key={section.section}>
+              <p className={classes.sectionHeader}>{section.section}</p>
+              {section.links.map((link) => (
+                <Link
+                  to={`/dashboard/${section.section.toLowerCase()}${link.path}`}
+                  className={classes.navLink}
+                  onClick={() => setShowMobileNav(false)}
+                >
+                  {" "}
+                  <img src={link.icon} alt="linkIcon" />
+                  <p>{link.link}</p>
+                </Link>
+              ))}
+            </div>
+          ))}
+        </div>
+        <div className={classes.logoutSection}>
+          <button className={classes.logout} onClick={logoutHandler}>
+            <img src={logout} alt="logout_icon" />
+            <p>Logout</p>
+          </button>
+          <p className={classes.version}>v1.2.0</p>
+        </div>
       </div>
-      <div className={classes.logoutSection}>
-        <button className={classes.logout} onClick={logoutHandler}>
-          <img src={logout} alt="logout_icon" />
-          <p>Logout</p>
-        </button>
-        <p className={classes.version}>v1.2.0</p>
-      </div>
-    </aside>
+    </div>,
+    mobileDom
   );
 };
 
-export default Sidebar;
+export default MobileNav;

@@ -138,8 +138,8 @@ const ViewUser = () => {
                 <p>MARITAL STATUS</p>
                 <h3>
                   {user &&
-                    user.profile.marialStatus.slice(0, 1).toUpperCase() +
-                      user.profile.marialStatus.slice(1)}
+                    user.profile.maritalStatus.slice(0, 1).toUpperCase() +
+                      user.profile.maritalStatus.slice(1)}
                 </h3>
               </div>
               <div className={classes.info}>
