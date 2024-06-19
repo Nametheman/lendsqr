@@ -6,6 +6,7 @@ export const paginationRange = (
   limit: number,
   siblings: number
 ) => {
+  console.log(limit);
   let totalPageNoInArray = 7 + siblings;
   if (totalPageNoInArray >= totalPage) {
     return _.range(1, totalPage + 1);

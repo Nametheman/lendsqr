@@ -9,8 +9,8 @@ import Table from "@/components/ui/Table/Table";
 import Pagination from "@/components/ui/Table/Pagination";
 import { TABLECOLUMNSTYPE, TABLEDATATYPE, USERTYPE } from "@/types/appTypes";
 
-const DATA = JSON.parse(localStorage.getItem("usersData") as string) || [];
 const Dashboard = () => {
+  const DATA = JSON.parse(localStorage.getItem("usersData") as string) || [];
   const formattedData: TABLEDATATYPE[] = DATA.map((d: any) => ({
     organization: d.profile.organization,
     username: d.profile.name,

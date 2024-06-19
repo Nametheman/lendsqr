@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import classes from "./ViewUser.module.scss";
 import backArrow from "@/assets/icons/backArrow.svg";
 import { Link, useParams } from "react-router-dom";
@@ -42,7 +42,6 @@ const ViewUser = () => {
     setShowActionModal(true);
   };
 
-  const userActive = user && user.status === "active";
   const userInactiveOrPending =
     user &&
     (user.status === "inactive" ||

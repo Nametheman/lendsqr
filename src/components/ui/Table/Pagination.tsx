@@ -111,7 +111,7 @@ const Pagination: React.FC<IPaginationProps> = ({
             ))}
           </select>
         </span>{" "}
-        out of <span>{data.length}</span>
+        out of <span> {data.length}</span>
       </div>
       <div className={classes.paginationControls}>
         <button
