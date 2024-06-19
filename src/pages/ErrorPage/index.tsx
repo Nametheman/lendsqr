@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import classes from "../../layouts/Dashboard.module.scss";
 import notFoundImg from "@/assets/images/404.png";
 

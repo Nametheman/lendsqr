@@ -31,7 +31,7 @@ const Table: React.FC<ITableProps> = ({
 
   useEffect(() => {
     setTableData(data);
-  }, [data]);
+  }, [data, allData]);
 
   const handleFilterClick = () => {
     setFilterShow((prev) => !prev);

@@ -62,6 +62,11 @@
             }
           }
 
+          .error {
+            color: red;
+            margin-top: -30px;
+          }
+
           .passwordContainer {
             position: relative;
             color: var.$secondaryText15;
@@ -92,6 +97,7 @@
                 font-weight: 500;
               }
             }
+
             button {
               position: absolute;
               right: 15px;
@@ -104,6 +110,9 @@
               color: var.$baseColor;
               cursor: pointer;
             }
+          }
+          .Passworderror {
+            color: red;
           }
         }
         .forgotPassword {
